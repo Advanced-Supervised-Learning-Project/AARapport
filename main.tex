@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Rapport Apprentissage Automatique}
+\author{Gabin Marc Mberi-Kongo, Quentin Vigne, Vincent Deschaud}
+\author{Thomas Cambon, Florent Jakubowski }
+\author{
+  Gabin Marc Mberi-Kongo\\
+  \texttt{gabin.mberi-kongo@univ-lyon2.fr}
+  \and
+  Quentin Vigne\\
+  \texttt{quentin.vigne@univ-lyon2.fr}
+  \and
+  Vincent Dechaud\\
+  \texttt{vincent.dechaud@univ-lyon2.fr}
+  \and
+  Thomas Cambon\\
+  \texttt{t.cambon@univ-lyon2.fr}
+  \and
+  Florent Jakubowski\\
+  \texttt{florent.jakubowski@univ-lyon2.fr}
+}
+\date{February 2021}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=1.7]{universe}
+\caption{The Universe}
+\label{fig:universe}
+\end{figure}
+
+Dans le cadre du module Apprentissage supervisé dispensé par Monsieur Ah-pine, nous avons eu le choix d'implémenter un algorithme d'apprentissage supervisé parmi plusieurs et de tester ses performances par rapport à d'autres méthodes d'apprentissage supervisé. 
+
+\section{Sujet}
+Nous avons choisis parmis les 4 sujets proposés le sujet sur l'algorithme Adaboost.
+\section{Problématiques scientifiques}
+La problématique scientifique pour ce projet est de vérifier l'intérêt des méthodes dites d'ensembles pour la classification binaire et multiclasses. L'enjeux sera d'observer la différence de performance entre des méthodes d'apprentissage supervisé ne se basant pas sur une prédiction par comité et des méthodes qui au contraire utilisent le vote par comité pour faire leur prédiction.
+Nous sommes appuyés sur l'implémentation de l'algorithme adaboost et de sa variante l'algorithme Adaboost M1 telle que décrite dans le 'papier' de Freund et Schapire \citep{FreundSchapire1996} en 1996 pour reimplémenter nos algorithmes.
+
+\section{implémentation}
+Pour l'implémentation nous avons chosis une approche par classe.
+\section{le jeu de données/benchmark}
+
+DECRIPTION DES DONNEES 
+Nous avons pris un jeu de données regroupant les campagnes kickstarter de 2016 et de 2018. 
+Pour chaque campagne est renseigné sont nom, sa catégorie, sa catégorei principale, la monnaie utilisée, la limite de temps fixée, l'objectif financier, la date de début de la campagne,le montant promis par les contributeurs, l'état de la campagne. 
+
+La campagne peut-être dans 4 états différents : 
+- soit réussie (successfull)
+- soit ratée (failed)
+- soit annulée (canceled)
+- soit en cours (live)
+- et soit non définie (undefined)
+
+Vous trouverez les données les plus utiles pour l'analyse de projet. Les colonnes sont explicites sauf:
+usd pledged: conversion en dollars américains de la colonne promis (conversion effectuée par kickstarter).
+usd pledge real: conversion en dollars américains de la colonne promis (conversion depuis l'API Fixer.io).
+objectif USD réel: conversion en USD de la colonne objectif (conversion depuis l'API Fixer.io).
+
+TRAVAIL FAIT SUR LES DONNEES
+Nous avons procéder à plusieur traitement sur les datasets de sorte à avoir un dataset avec seulement des campagnes à l'état réussie ou ratée pour la classification binaire, et un data set avec tous les états possibles pour la classification multiclasse. 
+
+\section{le protocole expérimental}
+Pour le protocole expérimental nous avons choisis plusieurs autres algorithmes d'apprentissage supervisé n'utilisant pas le vote par comité. 
+
+Pour la classification binaire nous avons choisis les algorithmes suivant : 
+Pour la classification multiclasse nous avons choisis les algorithmes suivant : 
+
+Nous avons entrainé nos 2 algorithmes et les autres algorithmes avec le même nombre d'époques et le même data set. 
+Puis nous avons comparé leurs prédictions avec les prédictions des autres algorithmes choisis à l'aide d'une fonction d'erreur.
+
+La fonction d'erreur calcule le pourcentage de mauvaises prédictions données sur les données de test. 
+
+\section{les résultats expérimentaux et leurs analyses}
+Tableau des résultats exprimentaux obtenus
+
+\section{une discussion scientifique/analyse critique}
+
+\section{Conclusion}
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
