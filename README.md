@@ -10,7 +10,7 @@ les thématiques abordées et l’intéret de celles-ci selon la nature du trava
 mise en perspective des méthodes et/ou des concepts
 que vous allez traiter (quelles probléatiques théoriques/méthodologiques ce que vous
 allez faire permet de traiter ?).
-### 4)Votre impléementation :  
+### 4)Votre implémentation :  
 le langage utilisé, le workflow, les différentes fonctions et leur
 spécification (comment avez-vous réalise, organisé votre code et avec quels outils ?)
 ### 5)Le jeu de données/benchmark :  
