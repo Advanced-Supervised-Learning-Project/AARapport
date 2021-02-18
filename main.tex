@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 
 \title{Rapport Apprentissage Automatique}
 \author{Gabin Marc Mberi-Kongo, Quentin Vigne, Vincent Deschaud}
@@ -43,26 +44,52 @@ Nous sommes appuyés sur l'implémentation de l'algorithme adaboost et de sa var
 
 \section{implémentation}
 Pour l'implémentation nous avons chosis une approche par classe.
-\section{le jeu de données/benchmark}
 
-DECRIPTION DES DONNEES 
-Nous avons pris un jeu de données regroupant les campagnes kickstarter de 2016 et de 2018. 
-Pour chaque campagne est renseigné sont nom, sa catégorie, sa catégorei principale, la monnaie utilisée, la limite de temps fixée, l'objectif financier, la date de début de la campagne,le montant promis par les contributeurs, l'état de la campagne. 
+\section{Présentation du jeu de données}
 
-La campagne peut-être dans 4 états différents : 
-- soit réussie (successfull)
-- soit ratée (failed)
-- soit annulée (canceled)
-- soit en cours (live)
-- et soit non définie (undefined)
+Pour ce projet, nous avons choisi d'utiliser un jeu de données avec différentes informations sur des projets Kickstarter de 2018. Kickstarter est une entreprise de financement participatif qui donne la possibilité aux internautes de financer des projets qui n'ont pas encore été développés.\newline 
 
-Vous trouverez les données les plus utiles pour l'analyse de projet. Les colonnes sont explicites sauf:
-usd pledged: conversion en dollars américains de la colonne promis (conversion effectuée par kickstarter).
-usd pledge real: conversion en dollars américains de la colonne promis (conversion depuis l'API Fixer.io).
-objectif USD réel: conversion en USD de la colonne objectif (conversion depuis l'API Fixer.io).
+\noindent Le fichier csv que nous avons utilisé contient les variables suivantes : \newline 
+\begin{itemize}
+    \item ID du projet (ID)
+    \item Nom du projet (NAME)
+    \item Catégorie principale (MAIN\_CATEGORY)
+    \item Sous-catégorie (CATEGORY)
+    \item Monnaie utilisée (CURRENCY)
+    \item Date limite pour le financement participatif (DEADLINE)
+    \item Somme d'argent (GOAL) que souhaite récolter un créateur pour financer son projet (si la somme n'est pas atteinte, le projet ne sera pas financé et le créateur ne recevra pas d'argent)
+    \item Date de lancement du projet (LAUNCHED)
+    \item Montant total promis par les contributeurs pour le projet (PLEGED)
+    \item Nombre de contributeurs (BACKERS)
+    \item Pays (COUNTRY)
+    \item Conversion en USD (USD\_PLEGED) du montant total promis par les contributeurs pour le projet (conversion effectuée par kickstarter) 
+    \item Conversion en USD (USD\_PLEGED\_REAL) du montant total promis par les contributeurs pour le projet (conversion depuis l'API Fixer.io)
+    \item Et enfin la somme d'argent que souhaite récolter un créateur pour financer son projet, convertie en USD (USD\_GOAL\_REAL).\newline 
 
-TRAVAIL FAIT SUR LES DONNEES
-Nous avons procéder à plusieur traitement sur les datasets de sorte à avoir un dataset avec seulement des campagnes à l'état réussie ou ratée pour la classification binaire, et un data set avec tous les états possibles pour la classification multiclasse. 
+\end{itemize}
+
+\noindent La variable que l'on essayera de prédire est l'état du projet (STATE). Six états sont possibles :
+
+\begin{itemize}
+    \item Projet réussi (successfull)
+    \item Projet échoué (failed)
+    \item Projet en cours (live)
+    \item Projet annulé (canceled)
+    \item Projet suspendu (suspended)
+    \item Ou projet non défini (undefined).\newline 
+\end{itemize}
+
+\noindent Voici un extrait des données :
+
+\begin{center} \includegraphics[scale=0.55]{extrait_donnees.PNG} \end{center}
+\noindent Ce jeu de données est intéressant car il a un nombre important d'individus et de variables. De plus, il possède à la fois des variables catégorielles et numériques, ce qui donne de la variété dans les types de variables. \newline
+
+\noindent Pour la suite, nous avons décidé de supprimer les colonnes ID et NAME car ce sont deux variables qui ont des valeurs uniques pour chacun des projets. Nous avons également supprimé les variables GOAL, PLEGED et USD\_PLEGED pour ne garder qu'une unique version de ces variables avec la devise USD.\newline
+
+\noindent Nous conserverons uniquement les projets à l'état "successful" ou "failed" pour l'algorithme adaboost binaire. "Successful" prendra la valeur 1 et "failed" la valeur 0.\newline
+
+\noindent Pour l'extension adaboost.M1 (problèmes multiclasses), nous garderons cette fois-ci tous les individus.
+
 
 \section{le protocole expérimental}
 Pour le protocole expérimental nous avons choisis plusieurs autres algorithmes d'apprentissage supervisé n'utilisant pas le vote par comité. 
