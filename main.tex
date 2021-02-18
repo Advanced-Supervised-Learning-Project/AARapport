@@ -92,15 +92,31 @@ Pour ce projet, nous avons choisi d'utiliser un jeu de données avec différente
 
 
 \section{le protocole expérimental}
-Pour le protocole expérimental nous avons choisis plusieurs autres algorithmes d'apprentissage supervisé n'utilisant pas le vote par comité. 
 
-Pour la classification binaire nous avons choisis les algorithmes suivant : 
-Pour la classification multiclasse nous avons choisis les algorithmes suivant : 
+Nous souhaitons comparer nos algorithmes implémentés avec d'autres algorithmes de classification supervisé. Ces algorithmes sont issues de la librairie "Scikit-Learn", qui est une librairie de machine learning très prisé des utilisateurs de Python. Les algorithmes choisis vont du plus basique, en partant des moindres carrés ordinaires, et allant vers des algorithmes assez proches d'Adaboost.
 
-Nous avons entrainé nos 2 algorithmes et les autres algorithmes avec le même nombre d'époques et le même data set. 
-Puis nous avons comparé leurs prédictions avec les prédictions des autres algorithmes choisis à l'aide d'une fonction d'erreur.
+Les algorithmes testés sont les suivants :
+\begin{itemize}
+    \item Moindres Carrés ordinaires 
+    \item Régression Logistique
+    \item Arbre de décision
+    \item SVM
+    \item Random Forest
+    \item Bagging
+    \item Ada Boost
+\end{itemize}
 
-La fonction d'erreur calcule le pourcentage de mauvaises prédictions données sur les données de test. 
+Tous les algorithmes ont été utilisés sur les mêmes données d'apprentissage et de test, avec le même nombre d'itération. Allant de 1 à 500.
+
+%Pour le protocole expérimental nous avons choisis plusieurs autres algorithmes d'apprentissage supervisé n'utilisant pas le vote par comité. 
+
+%Pour la classification binaire nous avons choisis les algorithmes suivant : 
+%Pour la classification multiclasse nous avons choisis les algorithmes suivant : 
+
+%Nous avons entrainé nos 2 algorithmes et les autres algorithmes avec le même nombre d'époques et le même data set. 
+%Puis nous avons comparé leurs prédictions avec les prédictions des autres algorithmes choisis à l'aide d'une fonction d'erreur.
+
+%La fonction d'erreur calcule le pourcentage de mauvaises prédictions données sur les données de test. 
 
 \section{les résultats expérimentaux et leurs analyses}
 Tableau des résultats exprimentaux obtenus
