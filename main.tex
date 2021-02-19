@@ -39,11 +39,67 @@ Dans le cadre du module Apprentissage supervisé dispensé par Monsieur Ah-pine,
 \section{Sujet}
 Nous avons choisis parmis les 4 sujets proposés le sujet sur l'algorithme Adaboost.
 \section{Problématiques scientifiques}
-La problématique scientifique pour ce projet est de vérifier l'intérêt des méthodes dites d'ensembles pour la classification binaire et multiclasses. L'enjeux sera d'observer la différence de performance entre des méthodes d'apprentissage supervisé ne se basant pas sur une prédiction par comité et des méthodes qui au contraire utilisent le vote par comité pour faire leur prédiction.
+La problématique scientifique pour ce projet est de vérifier l'intérêt des méthodes dites d'ensembles pour la classification binaire et multiclasses, plus spécifiquement l'algorithme Adaboost. L'enjeux sera d'observer la différence de performance entre des méthodes d'apprentissage supervisé ne se basant pas sur une prédiction par comité et des méthodes qui au contraire utilisent le vote par comité pour faire leur prédiction.
 Nous sommes appuyés sur l'implémentation de l'algorithme adaboost et de sa variante l'algorithme Adaboost M1 telle que décrite dans le 'papier' de Freund et Schapire \citep{FreundSchapire1996} en 1996 pour reimplémenter nos algorithmes.
 
+\section{Fondements, principes et état de l'art}
+Le fondement de l'Adaboost part du principe d'algorithmes de "Boosting"
+
+Propriétées : 
+- Origine ?
+- Principe (que fait-on ?)
+
+Faire le lien et comparer avec Bagging et SVM
+Pas aussi intéressant que le Bagging dans certains cas
+
 \section{implémentation}
+Le but de cette partie est d'explicité d'une part les détails techniques et l'organisation du code (5.1, 5.2, 5.4) et d'autre part notre organisation en tant qu'équipe et la manière dont nous avons réalisé ce code (5.3 Workflow)
+le langage utilisé, le workflow, les différentes fonctions et leur spécification (comment avez-vous réalise, organisé votre code et avec quels outils ?)
+\subsection{Langage et librairies utilisés}
+Nous avons utilisé le langage python pour développer notre code. Ce choix a été motivé par la simplicité d'implémentation et de compréhension du code, de plus l'accès à de nombreuse librairies comme panda ou scikit-learn était très intéressant dans notre cas. 
+
+Ci-suit la liste des librairies python utilisées dans ce projet : 
+\begin{itemize}
+  \item Numpy : Numpy est une bibliothèque que nous utilisons pour le calcul matricielle et sur des tableaux de plusieurs dimensions.
+  \item Pandas : Pandas est une bibliothèque permettant de manipuler des données également en python. Nous nous en servons pour charger des données depuis un csv dans des dataframe pandas et pouvoir ensuite effectuer des opérations dessus.
+  \item Scikit-learn : Scikit-learn est une bibliothèque destiné à l'apprentissage automatique. Elle fournit de nombreuses classes d'algorithmes d'apprentissage supervisé très simple à manipuler, des fonctions pour séparer son jeu de données en deux jeu de données d'entrainement et de test, et d'autres fonctions intéressantes permettant de visualiser les résultats de nos entrainements.
+  \item os : Os est un module de base de python, il permet d'utiliser les fonctionnalités dépendantes du système d'exploitation. Nous nous en servons pour définir un répertoire courant au moment de l'éxécution de notre code et ainsi défénir un chemin relatif pour charger notre csv de données.
+\end{itemize}
+
+\subsection{Workflow}
+
+Pour le développement du code nous avons adopté une organisation basique semblable aux organisation agile que l'on peut retrouver dans le milieu professionnelle. 
+Nous avons diviser le travail en tâches et nous nous les sommes attribuées au fur et à mesure du projet. Nous avions un tableau kanban rudimentaire avec des états 'Nouvelle tâche', 'A faire', 'En cours' et 'Terminé'. Nous passions les items à travers les différentes colonnes en fonction de l'état de la tâche. Cela nous a permis de bien nous répartir le travail et de suivre l'avancement du projet. 
+
+\paragraph{Intégration continue}
+
+Nous étions tous d'accord pour versionner dès le début notre code. Pour ce faire nous avons eu recours a l'outil de versionning Git. 
+Pour partager notre code nous nous sommes tournés vers le site Github qui permet un stockage des différentes version du code dans un dépôt (repository en anglais) virtuel, c'est-à-dire hébergé sur l'un de leur serveur.
+
+Pour chaque tâche nous réalisions une nouvelle branche sur notre environnement locale puis une fois terminée nous l'envoyions sur le dépôt distant via une demande d'ajout ('Pull request'). 
+Le code était ainsi relu par un ou plusieurs camarade pour s'assurer qu'il soit fonctionnel et compréhensible de tous. Une fois cette étape de validation passée nous ajoutions le code au code existant. 
+
+Toute cette organisation nous a permit d'itérer sur le projet et de mettre en commun le code développer par chacun de manière propre et organisée. 
+
+\subsection{Organisation du code}
+
+Dans le dossier src/adaboost réside les différentes implémentations de l'algorithme adaboost avec les fichiers utiles aux chargements des données et à la comparaison avec d'autres algorithmes d'apprentissage supervisés. 
+
+\begin{itemize}
+  \item The individual entries are indicated with a black dot, a so-called bullet.
+  \item The text in the entries may be of any length.
+\end{itemize}
+
+
+\subsection{Fonctions}
+Les différentes fonctions
+
 Pour l'implémentation nous avons chosis une approche par classe.
+
+\begin{itemize}
+  \item The individual entries are indicated with a black dot, a so-called bullet.
+  \item The text in the entries may be of any length.
+\end{itemize}
 
 \section{Présentation du jeu de données}
 
@@ -93,7 +149,7 @@ Pour ce projet, nous avons choisi d'utiliser un jeu de données avec différente
 
 \section{le protocole expérimental}
 
-Nous souhaitons comparer nos algorithmes implémentés avec d'autres algorithmes de classification supervisé. Ces algorithmes sont issues de la librairie "Scikit-Learn", qui est une librairie de machine learning très prisé des utilisateurs de Python. Les algorithmes choisis vont du plus basique, en partant des moindres carrés ordinaires, et allant vers des algorithmes assez proches d'Adaboost.
+Nous souhaitons comparer nos algorithmes implémentés avec d'autres algorithmes de classification supervisé. Ces algorithmes sont issues de la librairie "Scikit-Learn", qui est une librairie de machine learning très prisé des utilisateurs de Python. Les algorithmes choisis vont du plus basique, en partant des moindres carrés ordinaires, et allant vers des algorithmes concurents d'Adaboost.
 
 Les algorithmes testés sont les suivants :
 \begin{itemize}
@@ -120,6 +176,20 @@ Tous les algorithmes ont été utilisés sur les mêmes données d'apprentissage
 
 \section{les résultats expérimentaux et leurs analyses}
 Tableau des résultats exprimentaux obtenus
+
+\begin{center}
+    \begin{tabular}{| l | l | l | l }
+    \hline
+    Algorithme & 1 itérations & 10 itérations & 50 itérations \\ \hline
+    Régression Linéaire & 0.36087 &  0.36087 &  0.36087 
+    \\ \hline
+    10 & 11C & 22C  \\ \hline
+    50 & 9C & 19C  \\ \hline
+    100 & 10C & 21C  \\
+    \hline
+    \end{tabular}
+\end{center}
+
 
 \section{une discussion scientifique/analyse critique}
 
