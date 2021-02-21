@@ -43,13 +43,10 @@ La problématique scientifique pour ce projet est de vérifier l'intérêt des m
 Nous sommes appuyés sur l'implémentation de l'algorithme adaboost et de sa variante l'algorithme Adaboost M1 telle que décrite dans le 'papier' de Freund et Schapire \citep{FreundSchapire1996} en 1996 pour reimplémenter nos algorithmes.
 
 \section{Fondements, principes et état de l'art}
-Le fondement de l'Adaboost part du principe d'algorithmes de "Boosting"
-Propriétées : 
-- Origine ?
-- Principe (que fait-on ?)
+Le fondement de l'Adaboost part du principe d'algorithmes de "Boosting" introduit par Yoav Freund et Robert Schapire en juillet 1996 dans l'article "Experiments with a new boosting algorithm". Le but de ce nouvel algorithme de boosting est de réduire significativement l'erreur générée par les classifieurs faibles qui donnent un score à peine meilleur qu'un classifieur aléatoire. Ces classifieurs sont dénommés "classifieurs faibles" ou bien "Weak Learner" dans l'article original. Ce fût la première méthode fonctionnelle permettant de mettre en oeuvre le principe de boosting.
 
-Faire le lien et comparer avec Bagging et SVM
-Pas aussi intéressant que le Bagging dans certains cas
+Souvent le bagging et le boosting sont confondus puisque ces deux méthodes sont toutes les deux des méthodes ensemblistes. Le boosting que nous étudions ici va attribuer un poids plus fort aux classifieurs ayant prédit correctement que ceux dont la prédiction est incorrecte. Adaboost s'appuie sur ce principe en donnant plus d'importance aux valeurs compliquées à prédire. On booste les classifieurs qui réusissent lorsque d'autres échouent.
+
 
 \section{Implémentation}
 Le but de cette partie est d'explicité d'une part les détails techniques et l'organisation du code (5.1, 5.2, 5.4) et d'autre part notre organisation en tant qu'équipe et la manière dont nous avons réalisé ce code (5.3 Workflow)
@@ -194,7 +191,8 @@ Pour ce projet, nous avons choisi d'utiliser un jeu de données avec différente
 
 \noindent Voici un extrait des données :
 
-\begin{center} \includegraphics[scale=0.55]{extrait_donnees.PNG} \end{center}
+\begin{center} \includegraphics[scale=0.55]{extrait_donnees_partie1.PNG} \end{center}
+\begin{center} \includegraphics[scale=0.55]{extrait_donnees_partie2.PNG} \end{center}
 \noindent Ce jeu de données est intéressant car il a un nombre important d'individus et de variables. De plus, il possède à la fois des variables catégorielles et numériques, ce qui donne de la variété dans les types de variables. \newline
 
 \noindent Pour la suite, nous avons décidé de supprimer les colonnes ID et NAME car ce sont deux variables qui ont des valeurs uniques pour chacun des projets. Nous avons également supprimé les variables GOAL, PLEGED et USD\_PLEGED pour ne garder qu'une unique version de ces variables avec la devise USD.\newline
