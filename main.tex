@@ -44,7 +44,6 @@ Nous sommes appuyés sur l'implémentation de l'algorithme adaboost et de sa var
 
 \section{Fondements, principes et état de l'art}
 Le fondement de l'Adaboost part du principe d'algorithmes de "Boosting"
-
 Propriétées : 
 - Origine ?
 - Principe (que fait-on ?)
@@ -52,7 +51,7 @@ Propriétées :
 Faire le lien et comparer avec Bagging et SVM
 Pas aussi intéressant que le Bagging dans certains cas
 
-\section{implémentation}
+\section{Implémentation}
 Le but de cette partie est d'explicité d'une part les détails techniques et l'organisation du code (5.1, 5.2, 5.4) et d'autre part notre organisation en tant qu'équipe et la manière dont nous avons réalisé ce code (5.3 Workflow)
 le langage utilisé, le workflow, les différentes fonctions et leur spécification (comment avez-vous réalise, organisé votre code et avec quels outils ?)
 \subsection{Langage et librairies utilisés}
@@ -83,23 +82,81 @@ Toute cette organisation nous a permit d'itérer sur le projet et de mettre en c
 
 \subsection{Organisation du code}
 
-Dans le dossier src/adaboost réside les différentes implémentations de l'algorithme adaboost avec les fichiers utiles aux chargements des données et à la comparaison avec d'autres algorithmes d'apprentissage supervisés. 
+Dans le dossier src/adaboost réside les différentes implémentations de l'algorithme adaboost avec les fichiers utiles aux chargements des données et à la comparaison avec d'autres algorithmes d'apprentissage supervisés.
 
+Pour l'implémentation nous avons choisis le paradigme de l'orienté objet, c'est-à-dire une approche par classe. Il existe une classe par fichier .py avec pour chaque des méthodes spécifiques. 
+
+Seulement les fichiers main.py et cleanCSV.py contiennent des fonctions et non des classes. Le paradigme de la programmation fonctionnelle nous parassait plus adapté, étant que donnée que nous éxécutons chargions ou tranformions principalement des données grâce à ces fichiers.  
+
+\paragraph{Partie classification binaire : }
 \begin{itemize}
-  \item The individual entries are indicated with a black dot, a so-called bullet.
-  \item The text in the entries may be of any length.
+  \item weakleaner.py : classe weakleaner
+  \begin{itemize}
+    \item constructor
+    \item make\_stump\_prediction
+    \item calculate\_error\_rate
+    \item display\_stump
+  \end{itemize}
+  \item adaboost\_binary.py : classe 
+  \begin{itemize}
+          \item constructor
+            \item fit
+            \item predict
+            \item calculate\_error
+    \end{itemize}
+  \item adaboost\_binary\_benchmark.py : classe benchmark\_performance
+  \begin{itemize}
+          \item constructor
+          \item print\_benchmark\_res
+          \item get\_benchmark\_errors
+    \end{itemize}
+  \item cleanCSV\_adaboost\_binary.py : fonction format\_kickstarter\_datas
+  \begin{itemize}
+            \item format\_kickstarter\_datas
+    \end{itemize}
+  \item main\_binary.py :
+  \begin{itemize}
+          \item load\_data
+          \item main
+    \end{itemize}
+
 \end{itemize}
 
+\paragraph{Partie classification multiclasse : }
 
-\subsection{Fonctions}
-Les différentes fonctions
-
-Pour l'implémentation nous avons chosis une approche par classe.
 
 \begin{itemize}
-  \item The individual entries are indicated with a black dot, a so-called bullet.
-  \item The text in the entries may be of any length.
+  \item weakleaner\_M1\_multiclass.py : classe weakleaner
+  \begin{itemize}
+    \item constructor
+    \item make\_stump\_prediction
+    \item calculate\_error\_rate
+    \item display\_stump
+  \end{itemize}
+  \item adaboostM1\_multiclass.py : classe 
+  \begin{itemize}
+    \item constructor
+    \item fit
+    \item predict
+    \item calculate\_error
+  \end{itemize}
+  \item adaboostM1\_multiclass\_benchmark : classe benchmark\_performance
+  \begin{itemize}
+        \item constructor
+        \item print\_benchmark\_res
+        \item get\_benchmark\_errors
+    \end{itemize}
+  \item cleanCSV\_M1\_multiclass : fonction format\_kickstarter\_datas
+  \begin{itemize}
+        \item format\_kickstarter\_datas
+    \end{itemize}
+  \item main\_multiclass.py :
+  \begin{itemize}
+          \item load\_data
+          \item main
+    \end{itemize}
 \end{itemize}
+
 
 \section{Présentation du jeu de données}
 
@@ -147,7 +204,7 @@ Pour ce projet, nous avons choisi d'utiliser un jeu de données avec différente
 \noindent Pour l'extension adaboost.M1 (problèmes multiclasses), nous garderons cette fois-ci tous les individus.
 
 
-\section{le protocole expérimental}
+\section{Le protocole expérimental}
 
 Nous souhaitons comparer nos algorithmes implémentés avec d'autres algorithmes de classification supervisé. Ces algorithmes sont issues de la librairie "Scikit-Learn", qui est une librairie de machine learning très prisé des utilisateurs de Python. Les algorithmes choisis vont du plus basique, en partant des moindres carrés ordinaires, et allant vers des algorithmes concurents d'Adaboost.
 
@@ -178,20 +235,21 @@ Tous les algorithmes ont été utilisés sur les mêmes données d'apprentissage
 Tableau des résultats exprimentaux obtenus
 
 \begin{center}
-    \begin{tabular}{| l | l | l | l }
+    \begin{tabular}{| l | l | l | l |}
     \hline
     Algorithme & 1 itérations & 10 itérations & 50 itérations \\ \hline
     Régression Linéaire & 0.36087 &  0.36087 &  0.36087 
     \\ \hline
-    10 & 11C & 22C  \\ \hline
-    50 & 9C & 19C  \\ \hline
-    100 & 10C & 21C  \\
+    Régression Logistique & 0.39232 & 0.05242 & 0.00575  \\ \hline
+    SVM & 0.27555 & 0.29000 & 0.14666  \\ \hline
+    Arbre de décision & 0.00707 & 0.00676 & 0.00656 \\ \hline
+    Adaboost binaire & 0.16202 & 0.08666 & 0.03161 \\
     \hline
     \end{tabular}
 \end{center}
 
 
-\section{une discussion scientifique/analyse critique}
+\section{Une discussion scientifique/analyse critique}
 
 \section{Conclusion}
 Ici c'est la conclusion 
