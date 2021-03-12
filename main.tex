@@ -9,7 +9,7 @@
   Gabin Marc Mberi-Kongo\\
   \texttt{gabin.mberi-kongo@univ-lyon2.fr}
   \and
-  Quentin Vigne\\
+  Quentin Vigné\\
   \texttt{quentin.vigne@univ-lyon2.fr}
   \and
   Vincent Dechaud\\
@@ -37,13 +37,13 @@
 Dans le cadre du module Apprentissage supervisé dispensé par Monsieur Ah-pine, nous avons eu le choix d'implémenter un algorithme d'apprentissage supervisé parmi plusieurs et de tester ses performances par rapport à d'autres méthodes d'apprentissage supervisé. 
 
 \section{Sujet}
-Nous avons choisis parmis les 4 sujets proposés le sujet sur l'algorithme Adaboost.
+Parmi les différents sujets proposés nous avons fait le choix de travailler sur le sujet "Adaboost" qui nécéssite d'étudier de façon approfondie deux algorithmes pour la catégorisation de données. Ces deux algorithmes porteront sur la catégorisation binaire et sur la catégorisation multiclasse. Afin de traiter ce sujet, une première étape de lecture et d'analyse de notre sujet et nécéssaire, notamment par la lecture des articles fondateurs de l'adaboost et de la prise de connaissance des notions de boosting.  
 \section{Problématiques scientifiques}
 La problématique scientifique pour ce projet est de vérifier l'intérêt des méthodes dites d'ensembles pour la classification binaire et multiclasses, plus spécifiquement l'algorithme Adaboost. L'enjeux sera d'observer la différence de performance entre des méthodes d'apprentissage supervisé ne se basant pas sur une prédiction par comité et des méthodes qui au contraire utilisent le vote par comité pour faire leur prédiction.
-Nous sommes appuyés sur l'implémentation de l'algorithme adaboost et de sa variante l'algorithme Adaboost M1 telle que décrite dans le 'papier' de Freund et Schapire \citep{FreundSchapire1996} en 1996 pour reimplémenter nos algorithmes.
+Nous sommes appuyés sur l'implémentation de l'algorithme adaboost et de sa variante l'algorithme Adaboost M1 telle que décrite dans l'article de Freund et Schapire \citep{FreundSchapire1996} en 1996 pour reimplémenter nos algorithmes.
 
 \section{Fondements, principes et état de l'art}
-Le fondement de l'Adaboost part du principe d'algorithmes de "Boosting" introduit par Yoav Freund et Robert Schapire en juillet 1996 dans l'article "Experiments with a new boosting algorithm". Le but de ce nouvel algorithme de boosting est de réduire significativement l'erreur générée par les classifieurs faibles qui donnent un score à peine meilleur qu'un classifieur aléatoire. Ces classifieurs sont dénommés "classifieurs faibles" ou bien "Weak Learner" dans l'article original. Ce fût la première méthode fonctionnelle permettant de mettre en oeuvre le principe de boosting.
+Le fondement de l'Adaboost part du principe d'algorithmes de "Boosting" introduit par Yoav Freund et Robert Schapire en juillet 1996 \citep{FreundSchapire1996} dans l'article "Experiments with a new boosting algorithm". Le but de ce nouvel algorithme de boosting est de réduire significativement l'erreur générée par les classifieurs faibles qui donnent un score à peine meilleur qu'un classifieur aléatoire. Ces classifieurs sont dénommés "classifieurs faibles" ou bien "Weak Learner" dans l'article original. Ce fût la première méthode fonctionnelle permettant de mettre en oeuvre le principe de boosting.
 
 Souvent le bagging et le boosting sont confondus puisque ces deux méthodes sont toutes les deux des méthodes ensemblistes. Le boosting que nous étudions ici va attribuer un poids plus fort aux classifieurs ayant prédit correctement que ceux dont la prédiction est incorrecte. Adaboost s'appuie sur ce principe en donnant plus d'importance aux valeurs compliquées à prédire. On booste les classifieurs qui réusissent lorsque d'autres échouent.
 
@@ -88,35 +88,10 @@ Seulement les fichiers main.py et cleanCSV.py contiennent des fonctions et non d
 \paragraph{Partie classification binaire : }
 \begin{itemize}
   \item weakleaner.py : classe weakleaner
-  \begin{itemize}
-    \item constructor
-    \item make\_stump\_prediction
-    \item calculate\_error\_rate
-    \item display\_stump
-  \end{itemize}
-  \item adaboost\_binary.py : classe 
-  \begin{itemize}
-          \item constructor
-            \item fit
-            \item predict
-            \item calculate\_error
-    \end{itemize}
+  \item adaboost\_binary.py : classe adaboost\_binary
   \item adaboost\_binary\_benchmark.py : classe benchmark\_performance
-  \begin{itemize}
-          \item constructor
-          \item print\_benchmark\_res
-          \item get\_benchmark\_errors
-    \end{itemize}
   \item cleanCSV\_adaboost\_binary.py : fonction format\_kickstarter\_datas
-  \begin{itemize}
-            \item format\_kickstarter\_datas
-    \end{itemize}
-  \item main\_binary.py :
-  \begin{itemize}
-          \item load\_data
-          \item main
-    \end{itemize}
-
+  \item main\_binary.py : charge le jeu de données et effectue un benchmark de plusieurs algorithmes dessus.
 \end{itemize}
 
 \paragraph{Partie classification multiclasse : }
@@ -124,34 +99,10 @@ Seulement les fichiers main.py et cleanCSV.py contiennent des fonctions et non d
 
 \begin{itemize}
   \item weakleaner\_M1\_multiclass.py : classe weakleaner
-  \begin{itemize}
-    \item constructor
-    \item make\_stump\_prediction
-    \item calculate\_error\_rate
-    \item display\_stump
-  \end{itemize}
-  \item adaboostM1\_multiclass.py : classe 
-  \begin{itemize}
-    \item constructor
-    \item fit
-    \item predict
-    \item calculate\_error
-  \end{itemize}
-  \item adaboostM1\_multiclass\_benchmark : classe benchmark\_performance
-  \begin{itemize}
-        \item constructor
-        \item print\_benchmark\_res
-        \item get\_benchmark\_errors
-    \end{itemize}
-  \item cleanCSV\_M1\_multiclass : fonction format\_kickstarter\_datas
-  \begin{itemize}
-        \item format\_kickstarter\_datas
-    \end{itemize}
-  \item main\_multiclass.py :
-  \begin{itemize}
-          \item load\_data
-          \item main
-    \end{itemize}
+  \item adaboostM1\_multiclass.py : classe adaboost\_m1\_multiclass
+  \item adaboostM1\_multiclass\_benchmark.py : classe benchmark\_performance
+  \item cleanCSV\_M1\_multiclass.py : fonction format\_kickstarter\_datas
+  \item main\_multiclass.py : permet de charger les différents datasets et d'effectuer un benchmark de différents algorithmes dessus. 
 \end{itemize}
 
 
@@ -229,29 +180,57 @@ Tous les algorithmes ont été utilisés sur les mêmes données d'apprentissage
 
 %La fonction d'erreur calcule le pourcentage de mauvaises prédictions données sur les données de test. 
 
-\section{les résultats expérimentaux et leurs analyses}
-Tableau des résultats exprimentaux obtenus
+\section{Résultats expérimentaux}
+Tableau des résultats expérimentaux obtenus avec Adaboost binaire :
 
-\begin{center}
-    \begin{tabular}{| l | l | l | l |}
+\begin{table}[htbp]
+    \centering
+    \small
+    \setlength\tabcolsep{2pt}
+    \begin{tabular}{| l | l | l | l | l | l | l |}
     \hline
-    Algorithme & 1 itérations & 10 itérations & 50 itérations \\ \hline
-    Régression Linéaire & 0.36087 &  0.36087 &  0.36087 
-    \\ \hline
-    Régression Logistique & 0.39232 & 0.05242 & 0.00575  \\ \hline
-    SVM & 0.27555 & 0.29000 & 0.14666  \\ \hline
-    Arbre de décision & 0.00707 & 0.00676 & 0.00656 \\ \hline
-    Adaboost binaire & 0.16202 & 0.08666 & 0.03161 \\
+    Algorithme & 1 itérations & 10 itérations & 50 itérations & 100 itérations & 200 itérations & 500 itérations \\ \hline
+    Régression Linéaire & 0.36087 &  0.36087 &  0.36087 & 0.36087 & 0.36087 & 0.36087 \\ \hline
+    Régression Logistique & 0.39232 & 0.05242 & 0.00575 & 0.00595 &  0.00595 & 0.00595 \\ \hline
+    SVM & 0.27555 & 0.29000 & 0.14666 & 0.07505 & 0.07636 & 0.12707 \\ \hline
+    Arbre de décision & 0.00707 & 0.00676 & 0.00656 & 0.00737 & 0.00686 & 0.00707\\ \hline
+    Random Forest &  0.04424 & 0.01555 & 0.01171 & 0.01181 & 0.01060 &  0.01131  \\ \hline
+    Bagging & 0.00717 & 0.00494 & 0.00414 & 0.00414 & 0.00424 & 0.00424\\ \hline
+    Adaboost Scikit-Learn & 0.16202 & 0.06858 &  0.02050 & 0.01383 & 0.00939 & 0.00575\\ \hline
+    Adaboost binaire & 0.16202 & 0.08666 & 0.03161 & 0.02131 & 0.01444 & 0.00919\\
     \hline
     \end{tabular}
-\end{center}
+    \caption{Erreur de prédictions pour des données binaires}
+\end{table}
 
+Au vue des résultats de la classification multiclasses on peut se demander pourquoi notre implémentation de l'algorithme M1 ne résulte pas à une diminution de l'erreur au fil des itérations. En effet celui-ci semble converger et ce seulement après quelques itérations. 
+Nous avons constater qu'après quelques itérations l'algorithme M1 n'est plus en mesure de produire des classifieurs permettant une estimation supérieur à 0,5. Les classifieurs produits sont ni inférieur à un tirage aléatoire, ni supérieur, mais bien égaux durant toute la suite de l'entrainement. Cela entraine une valeur de beta égale à 1 et cela signifie que ces estimateurs produits ne seront pas interrogés au moment du vote en commité. Voilà pourquoi nous nous retrouvons avec un algorithme qui converge après une ou deux itérations. Au delà de ces itérations l'algorithme ne produit plus d'estimateurs plus performant que l'aléatoire.\\ 
 
+Nous nous sommes interrogés sur ce phénomène et nous avons essayé de mieux le comprendre. Pour cela nous avons créer des jeux de données synthétiques : 
+2 produits grâce à la fonction make\_gaussian\_quantile de scikit-learn. La fonction make\_gaussian\_quantile permet de 
+générer des échantillons gaussiens isotropes et d'étiqueter les échantillons par quantile. Le premier contenait 10 dimensions et 3 classes, et le second 3 dimensions et 3 classes. Le même phénomène est survenu également sur ces données. \\
+
+Nous avons créer plusieurs datasets de différentes dimensions et de contenant 3 ou plusieurs classes cette fois-ci avec la fonction make\_classification de scikit-learn. la fonction make\_classification génère un problème de classification aléatoire de n-classes. Le code peut être trouvé dans le fichier main\_multiclass.py. Il suffit de d'utiliser la fonction choose\_dataset avec comme argument la fonction générant le dataset souhaité. Les résultats sont meilleurs qu'avec les datasets précédents basés sur des échantillons gaussiens et sont soit proches de l'algorithme adaboost de scikit-learn soit meilleurs parfois. Mais les résultats restent aléatoires et nous n'avons pas deux fois les mêmes résultats lorsque nous lançons l'entrainement. Cela s'explique par le fait que make\_classification introduit une part d'aléatoire dans sa génération de données. \\
+
+Après plusieurs test de datasets créés avec make\_classification nous pensons que l'algorithme M1 a du mal a traité plusieurs classes (supérieur à 3) si de plus celles-ci ne sont pas équilibrées, c'est-à-dire que certaines classes contiennent beaucoup plus d'individus que d'autres.\\ 
+
+Cette observation est en accord avec nos données qui comporte plusieurs classes non équilibrées. \\
+
+Nous avons entrepris de programmer l'algorithme M2 adaboost pour justement constater s'il venait à bout des effet de bords  et des mauvaises performances constatés avec l'algorithme M1. 
+Malheureursement nous n'avons pas réussi à aller jusqu'au bout de son implémentation. 
 \section{Une discussion scientifique/analyse critique}
+Les algorithmes de boosting sont faciles à lire, à implémenter et à interpréter, ce qui rend les interprétations des prédictions facile à manipuler\cite{FreundSchapire1996}. Mais d'un autre coté les algorithmes de boosting soufrent globalement des problèmes d'optimisations et sont fortement influancés par des outliers.\\
+
+Adaboost présente  peu d'inconvénients mais il arrive qu'il soit particulièrement vulnérable au bruit uniforme et aux valeurs aberrantes des données\cite{educba}. 
+Un autre inconvénient est que la méthode est presque impossible à mettre à l'échelle. En effet, chaque estimateur fonde sa justesse sur les prédicteurs précédents, ce qui rend la procédure difficile à uniformiser\cite{corporatefinanceinstitute}.\\
+
+Il faut aussi noté les effets liés aux problèmes de déséquilibre de classe\cite{Longadage-2013}. En effet, certains auteurs ont constatés que l'algorithme arrive a faire des séparation même pour des classe mineurs sur des données n'ayant presque pas de frontière mais cependant, la méthode ne peut pas détecter  ce qu'ils ont appeller le "concept à la dérive".\\
+
+Dans notre cas, l'algorithme Adaboost implémenté donne des résultats bien supérieur aux autres algorithmes que sont la Régression lineaire et les SVM. sur les 10 premières itérations, un taux d'erreur de 8\% contre respectivement 29 et 36 pour les SVM et la Régression Linéaire et à 50 itérations, ce taux d'erreur besse de moitié soit à 3\% donc contre 14 et 36\% pour les SVM et la Régression Linéaire.\\
+Toute fois sachant que Adaboost combine les propriétés d'optimisations notemment avec les bornes sur les erreurs, les propriétés des SVM car il agit aussi sur les marges entre classe et les propriétés d'algorithmes bayésiens, les résultats que dévrait données notre algorithmes devrait être sans équivoque supérieur voir au coude à coude avec ceux des arbres de décisons. Nous sopposons donc que les résultats sur l'éfficacité d'Adaboost dépendent de la qualité des données mais aussi du type de données. N'ayant pas eu le temps nécessaire de controlé les valeurs aberrantes des données utilisées et nous pouvant affirmé avec mefiance que sur des données saines l'algorithme implementé aurait fait le taux d'erreur le plus bas possibles.
 
 \section{Conclusion}
-Ici c'est la conclusion 
-C'est terminé
+Dans cette partie nous devons décrire les apports de ce projet (Bonne compréhesion du boosting ?) et les difficultés rencontrées (Trouver un jeu de données ?)
 
 \bibliographystyle{plain}
 \bibliography{references}
