@@ -77,11 +77,16 @@ Toute cette organisation nous a permit d'itérer sur le projet et de mettre en c
 
 \subsection{Organisation du code}
 
-Dans le dossier src/adaboost réside les différentes implémentations de l'algorithme adaboost avec les fichiers utiles aux chargements des données et à la comparaison avec d'autres algorithmes d'apprentissage supervisé.
+Dans le dossier src/adaboost réside les différentes implémentations de l'algorithme adaboost avec les fichiers utiles aux chargements des données et à la comparaison avec d'autres algorithmes d'apprentissage supervisé.\\
 
-Pour l'implémentation nous avons choisis le paradigme de l'orienté objet, c'est-à-dire une approche par classe. Il existe une classe par fichier .py avec pour chacune d'entre elles des méthodes spécifiques. 
+Pour l'implémentation nous avons choisis le paradigme de l'orienté objet, c'est-à-dire une approche par classe. Il existe une classe par fichier .py avec pour chacune d'entre elles des méthodes spécifiques. \\
 
-Les fichiers main.py et cleanCSV.py sont les seuls qui sont composés de fonctions et non de classes. Le paradigme de la programmation fonctionnelle nous parassait plus adapté étant donné que nous éxécutions, chargions ou tranformions principalement des données grâce à ces fichiers.  
+Les fichiers main.py et cleanCSV.py sont les seuls qui sont composés de fonctions et non de classes. Le paradigme de la programmation fonctionnelle nous parassait plus adapté étant donné que nous éxécutions, chargions ou tranformions principalement des données grâce à ces fichiers.\\
+
+Les fichiers python contiennent des informations et de la documentation python sur leurs classes ou méthodes. 
+Le fonctionnement des algorithmes est aussi largement explicité dans les fichiers concernés.\\
+
+Voici un bref résumé des fichiers et de leurs contenus. \\
 
 \paragraph{Partie classification binaire : }
 \begin{itemize}
@@ -103,6 +108,16 @@ Les fichiers main.py et cleanCSV.py sont les seuls qui sont composés de fonctio
   \item main\_multiclass.py : permet de charger les différents datasets et d'effectuer un benchmark de différents algorithmes dessus. 
 \end{itemize}
 
+\begin{itemize}
+  \item weakleaner\_adaboost\_M2.py : classe weakleaner adapté pour l'algorithme M2.
+  \item adaboostM2\_.py : classe adaboost\_m2
+  \item cleanCSV\_adaboost\_M2.py : fonction  format\_kickstarter\_datas\_multiclass\_clf
+\end{itemize}
+
+\paragraph{fichier supplémentaire :}
+\begin{itemize}
+  \item outils.py : fonction getwd(), cette fonction permet d'obtenir le working directory pour gérer l'import des fichiers csv. 
+\end{itemize}
 
 \section{Présentation du jeu de données}
 
